@@ -1,0 +1,6 @@
+<h1>Order Details</h1>
+<ul>
+  <% @order.lineitems.each do |lineitem| %>
+    <li><%= lineitem.book.bname %> - Quantity: <%= lineitem.quantity %></li>
+  <% end %>
+</ul>

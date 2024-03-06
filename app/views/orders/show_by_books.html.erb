@@ -1,0 +1,7 @@
+<% if @orders.present? %>
+  <% @orders.each do |order| %>
+    <%= order.book.bname %>
+  <% end %>
+<% else %>
+    <p> No Order Selected </p>
+<% end %>

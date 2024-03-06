@@ -1,0 +1,39 @@
+
+<ol>
+<% @books.each do |book| %>
+  <li>
+  <div class="form-check">
+  <input type="checkbox"  class ="form-check-input book-select-checkbox" id="books_<%= book.id %>" data-book-id="<%= book.id %>" />
+  <%= book.bname %>
+  
+  </li>
+  
+  </div>
+<% end %>
+
+<%= button_to "Show Order", "order_path(@order)", class:'book-select-checkbox', id:'select-books' %>
+</ol>
+
+<script>
+  $(document).ready(function(){
+    $("#select-books").on('click', function(event){
+      event.preventDefault()
+      var bookIds = [];
+
+      $('.book-select-checkbox').each(function(){
+        if($(this).prop('checked')){
+          bookIds.push($(this).data('book-id'))
+        }
+      });
+
+      $.ajax({
+        url:'orders',
+        type:'POST',
+        data:{ book_ids: bookIds },
+        success: function(response){
+        }    
+      });
+    });
+   
+  });
+</script>

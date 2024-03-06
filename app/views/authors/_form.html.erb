@@ -1,0 +1,26 @@
+
+
+  <%= form_with(model: @author, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :aname %>
+      <%= form.text_field :aname %>
+    </div>
+    
+    <div class="field">
+    <%= form.label :bname %>
+    <%= form.text_field :bname %>
+    </div>
+  
+
+    
+  
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+    
+    <div class="actions">
+      <%= form.submit %>
+     
+    </div>
+  <% end %>

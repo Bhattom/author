@@ -1,0 +1,10 @@
+
+
+<ol>
+<% @lineitems.each do |lineitem| %>
+  <tr>
+    Order ID:<td><%= lineitem.order_id if lineitem.order.present? %></td>
+  </tr>
+<% end %>
+</ol>
+

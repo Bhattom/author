@@ -1,0 +1,36 @@
+
+<ol>
+ <% @books.each do |book| %>
+  <li>
+  <div class="form-check">
+    <input type="checkbox"  class ="form-check-input book-select-checkbox" id="book_<%= book.id %>" data-book-id="<%= book.id %>" />
+    <%= link_to book.bname, book %> 
+  </div>
+  </li>
+ <% end %>
+ <button type="button" class="btn btn--primary" id="select-books" >Add Products</button>
+</ol>
+<script>
+  $(document).ready(function(){
+    $("#select-books").on('click', function(){
+      var bookIds = [];
+
+      $('.author-select-checkbox').each(function(){
+        if($(this).prop('checked')){
+          authorIds.push($(this).data('book-id'))
+        }
+        alert(book_id)
+      });
+      $.ajax({
+        url:'lineitmes/show',
+        type:'GET',
+        data:{ book_ids: bookIds },
+        success: function(response){
+          location.reload();
+        }    
+      });
+    });
+   
+  });
+</script>
+<%= link_to 'Show Line Item', controller: 'lineitems', action: 'show', id: @lineitem.id %>  

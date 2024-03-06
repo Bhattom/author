@@ -1,0 +1,9 @@
+<%= form_for @order do |f| %>
+  <%= f.label :Book %>
+  <%= f.text_field :bname %><br>
+  <%= f.label :BookID %>
+  <%= f.book.order_id %>
+  <%= f.label :Quantity %>
+  <%= f.number_field :quantity %><br>
+  <%= f.submit "Create Order" %>
+<% end %>

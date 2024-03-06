@@ -1,0 +1,43 @@
+<html>
+  <body>
+  <ol>
+   <% @authors.each do |author| %>
+    <li>
+    <div class="form-check">
+    <input type="checkbox"  class ="form-check-input author-select-checkbox" id="author_<%= author.id %>" data-author-id="<%= author.id %>" />
+    <%= link_to author.aname, author %> 
+    </li>
+    </div>
+    <%end%>
+  </ol>
+  <%= link_to "New Author", new_author_path %><br>
+  
+  <button type="button" class="btn btn-danger" id="delete-authors" >Delete</button>
+  <br>
+  </body>
+</html>
+<script>
+  $(document).ready(function(){
+    $("#delete-authors").on('click', function(){
+      var authorIds = [];
+
+      $('.author-select-checkbox').each(function(){
+        if($(this).prop('checked')){
+          authorIds.push($(this).data('author-id'))
+        }
+      });
+      alert(authorIds); 
+
+      $.ajax({
+        url:'authors/bulk_delete',
+        type:'DELETE',
+        data:{ author_ids: authorIds },
+        success: function(response){
+          location.reload();
+        }    
+      });
+    });
+   
+  });
+</script>
+
