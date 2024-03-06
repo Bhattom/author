@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new
-    p 88888888
     p params[:book_ids]
     params[:book_ids].each do |b|
       @order.lineitems.new(book_id: b)
